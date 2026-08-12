@@ -1,0 +1,830 @@
+/* Main menu button style */
+.main-btn {
+    display: inline-block;
+    background: #ff00ff;
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    margin: 20px 10px 0 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #00ffff, 0 0 5px #ff00ff;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.main-btn:hover {
+    background: #00ffff;
+    color: #ff00ff;
+    box-shadow: 0 0 20px #ff00ff, 0 0 10px #00ffff;
+}
+/* Cyberpunk Theme */
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #00ffff;
+    margin: 0;
+    padding: 0;
+    /* Full-screen cyberpunk background */
+    background: radial-gradient(circle at 20% 20%, rgba(0,255,255,0.06), transparent 28%),
+                radial-gradient(circle at 80% 10%, rgba(255,0,255,0.08), transparent 22%),
+                radial-gradient(circle at 50% 80%, rgba(0,255,180,0.05), transparent 30%),
+                linear-gradient(180deg, #000 0%, #05010a 60%, #0b0010 100%);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.content-public {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Public hero landing */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.hero-title {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #39d7ff;
+    text-shadow: 0 0 18px #00ffff, 0 0 36px #00e6ff, 0 0 60px #7df0ff, 0 0 90px #9af0ff;
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.hero-logo {
+    width: 140px;
+    height: auto;
+    filter: drop-shadow(0 0 18px rgba(0,255,255,0.55));
+    transition: transform 0.25s ease;
+    animation: pulseGlow 3.5s ease-in-out infinite;
+}
+
+.hero-sub {
+    margin: 0;
+    color: #b8f6ff;
+    opacity: 0.8;
+}
+
+.icon-menu {
+    display: flex;
+    gap: 28px;
+    margin-top: 10px;
+}
+
+.icon-btn {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #0c0c0f, #12121a);
+    border: 1px solid rgba(0,255,255,0.5);
+    box-shadow: 0 0 18px rgba(0,255,255,0.45), 0 0 36px rgba(255,0,255,0.35);
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.icon-btn::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 20px;
+    background: radial-gradient(circle at 30% 20%, rgba(0,255,255,0.12), transparent 20%),
+                radial-gradient(circle at 70% 80%, rgba(255,0,255,0.08), transparent 25%);
+    filter: blur(8px);
+    opacity: 0.9;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.icon-btn .icon {
+    font-size: 36px;
+}
+
+.icon-btn::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: -36px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* make the label non-blocking and visually neutral to avoid overlay artifacts */
+    background: transparent;
+    color: #00ffff;
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    border: none;
+    box-shadow: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.icon-btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    border-color: rgba(255,0,255,0.75);
+    box-shadow: 0 0 28px rgba(0,255,255,0.65), 0 0 48px rgba(255,0,255,0.55);
+}
+
+.icon-btn:hover::before {
+    transform: scale(1.03);
+    opacity: 1;
+}
+
+.icon-btn:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -2px);
+}
+
+/* Glow animation */
+@keyframes pulseGlow {
+    0% { text-shadow: 0 0 12px rgba(0,230,255,0.6), 0 0 28px rgba(0,180,255,0.15); transform: translateY(0); }
+    50% { text-shadow: 0 0 30px rgba(0,255,255,0.9), 0 0 60px rgba(120,240,255,0.35); transform: translateY(-2px); }
+    100% { text-shadow: 0 0 12px rgba(0,230,255,0.6), 0 0 28px rgba(0,180,255,0.15); transform: translateY(0); }
+}
+
+/* Responsive adjustments for phones */
+@media (max-width: 600px) {
+    .content-public { padding: 12px; }
+    .hero { gap: 12px; padding: 24px 12px; }
+    .hero-title { font-size: 22px; }
+    .hero-sub { font-size: 13px; }
+    .hero-logo { width: 96px; }
+    .icon-menu { gap: 14px; }
+    .icon-btn { width: 72px; height: 72px; border-radius: 12px; }
+    .icon-btn .icon { font-size: 26px; }
+    .icon-btn::after { bottom: -34px; font-size: 12px; padding: 4px 8px; }
+    /* stack vertically on narrow portrait screens */
+    @media (orientation: portrait) {
+        .icon-menu { flex-direction: column; gap: 16px; }
+        .icon-btn::after { bottom: -40px; }
+    }
+}
+
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    background: #111;
+    position: fixed;
+    padding: 20px;
+    box-shadow: 0 0 10px #00ffff;
+}
+
+.sidebar h2 {
+    color: #0b3d91; /* dark blue */
+    margin: 0 0 12px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #ffffff; /* white underline */
+    display: block;
+}
+
+/* White outline / stroke for MENU text */
+.sidebar-title .menu-text {
+    -webkit-text-stroke: 1px #ffffff;
+    text-stroke: 1px #ffffff;
+    text-shadow: 0 0 2px #ffffff, 0 0 6px rgba(255,255,255,0.6);
+    display: inline-block;
+    padding: 0 4px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 10px 0;
+}
+
+.sidebar a {
+    color: #00ffff;
+    text-decoration: none;
+}
+
+.logout {
+    position: absolute;
+    bottom: 20px;
+}
+
+.content {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+/* watermark moved inside sidebar; keep small helper in case used elsewhere */
+.watermark {
+    color: #666;
+    font-size: 12px;
+}
+
+.tickets-table { min-height: 240px; }
+
+.card.report-card { background: rgba(10,10,14,0.55); }
+
+/* ensure sidebar and content spacing work well */
+.sidebar { width: 220px; position: fixed; height: 100vh; left: 0; top: 0; }
+.content { margin-left: 240px; padding: 24px; }
+
+/* Main panel (white paper) for admin content */
+.main-panel {
+    background: #ffffff;
+    color: #111;
+    min-height: calc(100vh - 48px);
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+}
+
+/* Sidebar-made-by watermark styling */
+.sidebar .made-by {
+    color: #0b3d91;
+    opacity: 0.95;
+}
+
+/* watermark styling: dark blue text with white outline and line above */
+.sidebar .made-by {
+    color: #0b3d91;
+    display: inline-block;
+    padding-top: 10px;
+    margin-top: 8px;
+    border-top: 2px solid #ffffff;
+    -webkit-text-stroke: 0.9px #ffffff;
+    text-stroke: 0.9px #ffffff;
+    text-shadow: 0 0 2px #ffffff, 0 0 6px rgba(255,255,255,0.6);
+}
+.sidebar .made-by .cp { margin-right:6px; font-weight:700; }
+.sidebar.collapsed .made-by { display:none; }
+
+@media (max-width: 900px) {
+    .sidebar { position: relative; width: 100%; height: auto; }
+    .content { margin-left: 0; }
+    .main-panel { border-radius: 0; box-shadow: none; }
+}
+
+/* Collapsed sidebar for desktop */
+.sidebar.collapsed { width: 72px; }
+.sidebar.collapsed .nav-text { display: none; }
+.sidebar.collapsed .logout .made-by { display: none; }
+.sidebar.collapsed .nav-link { text-align: center; }
+.sidebar.collapsed .nav-link i { margin-right: 0; }
+.sidebar.collapsed + .content { margin-left: 88px; }
+
+/* hide header when collapsed */
+.sidebar.collapsed .sidebar-title { display: none; }
+
+/* Mobile slide-in behavior */
+@media (max-width: 900px) {
+    .sidebar { position: fixed; left: 0; top: 0; z-index: 1050; transform: translateX(-110%); transition: transform 0.25s ease; }
+    .sidebar.open { transform: translateX(0); }
+    /* when mobile open, add a backdrop */
+    .sidebar-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.35); z-index: 1040; display: none; }
+    .sidebar-backdrop.show { display: block; }
+}
+
+/* Ensure text inside main-panel is dark for white-paper look */
+.main-panel, .main-panel h2, .main-panel .card, .main-panel .table, .main-panel .table thead th, .main-panel .table td, .main-panel .stat, .main-panel .stat .num {
+    color: #111 !important;
+}
+.main-panel .btn { color: #000 !important; }
+
+/* Status icons (small badges) */
+.status-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    background: #f1f1f1;
+    color: #333;
+    font-size: 18px;
+    cursor: help;
+    line-height: 1;
+}
+.status-icon i { vertical-align: middle; }
+.status-submitted { background:#fff3cd; color:#856404; border:1px solid #ffeeba; }
+.status-waiting { background:#e9ecef; color:#6c757d; border:1px solid #dee2e6; }
+.status-assigned { background:#cfe2ff; color:#084298; border:1px solid #9ec5ff; }
+.status-in_progress { background:#ffe5b4; color:#8a4b00; border:1px solid #ffd59a; }
+.status-finished { background:#d1e7dd; color:#0f5132; border:1px solid #bcd0c7; }
+.status-waiting_confirmation { background:#e2d5ff; color:#4b1f7a; border:1px solid #d6c2ff; }
+.status-closed { background:#f8d7da; color:#842029; border:1px solid #f5c2c7; }
+
+
+/* Form styles */
+/* Only style public-facing forms (report & login). Admin forms use .main-panel/card white paper look */
+.report-card form, .login-card form, .content-public form {
+    background: #222;
+    padding: 20px;
+    border: 1px solid #00ffff;
+}
+
+/* Admin / main-panel forms should use the white paper style */
+.main-panel form {
+    background: transparent;
+    color: #111;
+    padding: 0;
+    border: none;
+}
+
+.main-panel form input[type="text"], .main-panel form input[type="password"], .main-panel form select, .main-panel form textarea {
+    background: #fff !important;
+    color: #111 !important;
+    border: 1px solid #ddd !important;
+    padding: 8px;
+}
+
+/* Style the icon-only Cancel and Save buttons inside admin forms */
+.main-panel form a[aria-label="Cancel"], .main-panel form button[aria-label="Cancel"] {
+    background: #dc3545 !important; /* bootstrap danger */
+    color: #fff !important;
+    border-color: #dc3545 !important;
+}
+.main-panel form a[aria-label="Cancel"]:hover, .main-panel form button[aria-label="Cancel"]:hover {
+    background: #c82333 !important;
+    border-color: #bd2130 !important;
+}
+.main-panel form button[aria-label="Save user"], .main-panel form button[aria-label="Save"] {
+    background: #198754 !important; /* bootstrap success */
+    color: #fff !important;
+    border-color: #198754 !important;
+}
+.main-panel form button[aria-label="Save user"]:hover, .main-panel form button[aria-label="Save"]:hover {
+    background: #157347 !important;
+    border-color: #146c43 !important;
+}
+
+.report-card {
+    width: 720px;
+    max-width: 94vw;
+    background: rgba(10,10,14,0.6);
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid rgba(0,255,255,0.12);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 0 40px rgba(0,255,255,0.04) inset;
+    color: #cffaff;
+}
+
+/* Login card */
+.login-card {
+    width: 420px;
+    max-width: 94vw;
+    background: rgba(10,10,14,0.8);
+    padding: 22px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,255,255,0.12);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 0 40px rgba(0,255,255,0.04) inset;
+    color: #cffaff;
+}
+.login-card h2 { margin-top: 0; color: #8ff6ff; }
+.login-card label { display:block; margin:8px 0 6px; font-weight:600; }
+.login-card input[type="text"], .login-card input[type="password"], .login-card input[type="file"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(0,255,255,0.12);
+    background: rgba(0,0,0,0.38);
+    color: #cffaff;
+    max-width: 100%;
+}
+
+/* Back button inside login card */
+.back-btn {
+    display: inline-grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(0,0,0,0.35);
+    color: #00ffff;
+    border: 1px solid rgba(0,255,255,0.12);
+    border-radius: 8px;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+.back-btn:hover { box-shadow: 0 6px 18px rgba(0,255,255,0.04); transform: translateY(-2px); }
+
+/* Error message */
+.error { margin-top:12px; background: rgba(255,50,50,0.08); color: #ffb4b4; padding:10px; border:1px solid rgba(255,50,50,0.14); border-radius:6px; }
+
+
+.report-card h2 { margin-top: 0; color: #8ff6ff; }
+.report-card label { display:block; margin:10px 0 6px; font-weight:600; }
+.report-card input[type="text"], .report-card select, .report-card textarea, .report-card input[type="file"] {
+    width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(0,255,255,0.12); background: rgba(0,0,0,0.4); color: #cffaff;
+}
+.report-card textarea { min-height: 100px; resize: vertical; }
+.muted { color: rgba(200,255,255,0.6); font-size: 0.95rem; }
+.captcha-row { display:flex; gap:10px; align-items:center; margin:10px 0; }
+.captcha-row img { height:44px; width:100px; object-fit:cover; border:1px solid rgba(255,255,255,0.06); }
+.small { background:transparent; border:1px solid rgba(255,255,255,0.06); color:#bff; padding:6px 8px; border-radius:6px; }
+.icon-small {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.25));
+    border: 1px solid rgba(0,255,255,0.12);
+    box-shadow: 0 6px 18px rgba(0,255,255,0.03), 0 0 12px rgba(0,255,255,0.04) inset;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.icon-small:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0,255,255,0.5);
+    box-shadow: 0 10px 28px rgba(0,255,255,0.06), 0 0 22px rgba(0,255,255,0.06) inset;
+}
+.form-actions { display:flex; gap:10px; margin-top:14px; justify-content: space-between; align-items: center; }
+.primary { background:#ff00ff; color:#080808; padding:10px 18px; border-radius:8px; border:none; }
+.secondary { background:transparent; color:#bff; padding:10px 18px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); }
+
+@media (max-width:600px) {
+    .report-card { padding: 16px; }
+}
+
+/* Category icon grid */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+}
+.category-icon {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.25));
+    border: 1px solid rgba(0,255,255,0.08);
+    padding: 12px;
+    border-radius: 10px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    color: #cfeff0;
+    cursor: pointer;
+}
+.category-icon .cat-icon { font-size: 28px; }
+.category-icon .cat-label { font-size: 14px; }
+.category-icon.selected {
+    border-color: rgba(0,255,255,0.6);
+    box-shadow: 0 6px 18px rgba(0,255,255,0.06), 0 0 28px rgba(0,255,255,0.04) inset;
+    transform: translateY(-2px);
+}
+
+@media (max-width:600px) {
+    .category-grid { grid-template-columns: repeat(2, 1fr); }
+    .category-icon { padding: 10px; }
+}
+
+/* Mobile: Improve home/main menu layout and tap targets */
+@media (max-width:420px) {
+    .hero {
+        padding: 36px 20px;
+        text-align: center;
+    }
+    .hero-logo {
+        width: 96px;
+        height: 96px;
+        display: inline-block;
+        margin: 8px auto 14px auto;
+        border-radius: 50%;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.6), 0 0 24px rgba(0,255,255,0.04) inset;
+    }
+    .hero-title { font-size: 20px; margin-top: 6px; }
+    .hero-sub { font-size: 13px; margin-bottom: 18px; }
+
+    .icon-menu {
+        display:flex;
+        flex-direction:column;
+        gap:18px;
+        align-items:center;
+        justify-content:center;
+        margin-top: 8px;
+    }
+    .icon-btn {
+        width:88px;
+        height:88px;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:16px;
+        font-size:30px;
+        line-height:1;
+        padding:0;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        border: 2px solid rgba(255,255,255,0.02);
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.25));
+    }
+    .icon-btn .icon { font-size:34px; }
+    .icon-btn:focus, .icon-btn:hover { transform: translateY(-2px); outline: none; }
+
+    /* make the hero area vertically centered-ish on very small screens */
+    .hero { min-height: calc(100vh - 40px); display:flex; flex-direction:column; align-items:center; justify-content:center; }
+}
+
+/* Mobile: report form adjustments for better touch targets */
+@media (max-width:480px) {
+    .report-card { max-width: 96%; margin: 12px auto; padding: 6px; }
+    .report-card .card-body { padding: 14px; }
+    .report-card h2.card-title { font-size: 18px; }
+    .report-card label { font-size: 13px; display:block; margin-top:10px; }
+
+    input, select, textarea { font-size: 16px; padding: 12px; margin: 8px 0; }
+    .form-actions .btn { padding: 12px 14px; font-size: 15px; }
+
+    /* Make category tiles full-width stacked for easier tapping */
+    .category-grid { grid-template-columns: 1fr; gap: 12px; }
+    .category-icon { padding: 16px; min-height: 72px; border-radius: 12px; }
+    .category-icon .cat-icon { font-size: 34px; }
+    .category-icon .cat-label { font-size: 15px; margin-top:6px; }
+
+    #sub-category { margin-top: 12px; }
+    #attachment { font-size: 14px; }
+    #attachment-info { font-size: 13px; }
+    .captcha-row img { height: 44px; }
+}
+
+input, select, textarea {
+    background: #000;
+    color: #00ffff;
+    border: 1px solid #00ffff;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+button {
+    background: #ff00ff;
+    color: #000;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Dashboard table and badges */
+.stats { display:flex; gap:12px; margin-bottom:16px; }
+.stat { background: rgba(0,0,0,0.4); padding:12px 16px; border-radius:8px; border:1px solid rgba(0,255,255,0.06); }
+.stat .num { font-size:20px; font-weight:700; color:#111; }
+.badge { display:inline-block; padding:6px 10px; border-radius:12px; font-size:13px; color:#000; font-weight:700; }
+.badge.waiting { background:#ffd966; }
+.badge.assigned { background:#66d9ff; }
+.badge.in_progress { background:#ff9f00; }
+.badge.finished { background:#8fd17a; }
+.badge.closed { background:#bdbdbd; }
+
+.tickets-table { width:100%; border-collapse:collapse; margin-top:8px; }
+.tickets-table th, .tickets-table td { padding:10px 8px; border-bottom:1px solid rgba(255,255,255,0.04); text-align:left; }
+.tickets-table th { color:#9ff; background: rgba(0,0,0,0.2); }
+
+/* Light table styles inside main-panel */
+.main-panel .tickets-table th { color:#111 !important; background:#f3f3f3 !important; }
+.main-panel .tickets-table td { color:#111 !important; border-bottom:1px solid #e9e9e9 !important; }
+/* Ensure small text in table (kode, NIP) is also dark */
+.main-panel .tickets-table td small { color: #111 !important; }
+
+/* Make action buttons and inline priority controls neutral (no filled background) */
+.main-panel .tickets-table .action-btn {
+    background: transparent !important;
+    color: #111 !important;
+    border: 1px solid #e6e6e6 !important;
+    padding: 6px 10px;
+}
+.main-panel .tickets-table .action-btn.danger {
+    background: transparent !important;
+    color: #c00 !important;
+    border-color: #f5c2c7 !important;
+}
+.main-panel .tickets-table .btn {
+    /* keep default bootstrap outline buttons for clear visuals */
+}
+.main-panel .tickets-table select.form-select-sm {
+    background: transparent !important;
+    color: #111 !important;
+    border: 1px solid #e6e6e6 !important;
+}
+
+/* Inline forms inside tickets table should not use the dark global form styles */
+.main-panel .tickets-table form {
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    display: inline !important;
+    margin: 0 !important;
+}
+.main-panel .tickets-table form .form-select,
+.main-panel .tickets-table form .form-select-sm {
+    background: #fff !important;
+    color: #111 !important;
+}
+
+/* Ensure forms inside any table cells are neutral (no dark bar behind small inline buttons) */
+.card .table form,
+.table form {
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    display: inline !important;
+    margin: 0 !important;
+}
+
+/* Stat icon sizing (used in top summary cards) */
+.stat .status-icon, .card .status-icon { width: 36px; height: 36px; display:inline-flex; align-items:center; justify-content:center; font-size:18px; border-radius:6px; }
+.card .status-icon { margin-top:6px; }
+.tickets-table td small { color: #aaa; display:block; }
+.action-btn { padding:6px 10px; border-radius:6px; margin-right:6px; background:rgba(255,255,255,0.06); color:#00ffff; border:1px solid rgba(0,255,255,0.06); text-decoration:none; }
+.action-btn.danger { background:#ff6b6b; color:#fff; border:none; } 
+
+/* Compact dashboard table to reduce vertical space when timestamps are shown */
+.dashboard-table th, .dashboard-table td { padding:8px 6px; }
+.dashboard-table td .compact-times { font-size:12px; color:#6c757d; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.dashboard-table td .compact-times small { font-size:11px; }
+
+/* Attachments gallery */
+.attachments-gallery .attachment-thumb { cursor: pointer; display:block; }
+.attachments-gallery .card { overflow: hidden; }
+.attachments-gallery .card .card-footer { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Lightbox modal styling */
+.modal-content.bg-transparent { background: transparent !important; }
+#attachmentLightboxContent { background: rgba(0,0,0,0.9); padding: 8px; border-radius: 6px; }
+#attachmentLightboxContent img, #attachmentLightboxContent video { max-height: 80vh; object-fit: contain; }
+
+/* Ensure modal text is readable: force dark text on light modals unless explicitly transparent/dark (e.g. lightbox) */
+.modal-content:not(.bg-transparent) {
+    color: #111 !important;
+    background-color: #fff !important;
+}
+
+/* Mobile-specific responsive helpers for reports page */
+@media (max-width: 768px) {
+    /* Allow filter controls to wrap and take full width on small screens */
+    .card .d-flex.flex-wrap > div, .card .d-flex.flex-wrap > div * {
+        min-width: 0 !important;
+        flex: 1 1 100% !important;
+        width: 100% !important;
+    }
+
+    /* Ensure the toolbar actions don't overflow; place them on their own row */
+    .card .ms-auto, .card .ms-auto.d-flex {
+        order: 99;
+        width: 100%;
+        display: flex !important;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-top: 8px;
+    }
+
+    /* Make charts responsive: use full width and let Chart.js control heights */
+    .chart-wrap canvas {
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+    }
+
+    /* Stack the left/right columns vertically */
+    .row > .col-md-8, .row > .col-md-4 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Modal dialogs should be near-fullscreen for smaller devices */
+    .modal-dialog.modal-xl, .modal-dialog.modal-lg {
+        max-width: 95% !important;
+        margin: 1rem auto;
+    }
+
+    /* Reports list: make items full width and touch-friendly */
+    #reportsList .report-card, #allReportsModalBody .report-card {
+        width: 100% !important;
+        box-sizing: border-box;
+        padding: 12px !important;
+        margin-bottom: 10px;
+    }
+
+    /* Improve spacing and hit targets for filter inputs */
+    .form-control, .form-select {
+        padding: 10px 12px !important;
+        font-size: 15px !important;
+    }
+}
+
+/* Category grid for report form */
+.category-grid { margin-top:8px; }
+.category-grid .category-icon { display:flex; flex-direction:column; align-items:flex-start; gap:6px; border-radius:8px; background:#0b0b0d; color:#cffaff; border:1px solid rgba(0,255,255,0.06); }
+.category-grid .category-icon .cat-icon { font-size:28px; }
+.category-grid .category-icon .cat-label { font-size:13px; }
+.category-grid .category-icon.selected { border-color: rgba(0,255,255,0.3); box-shadow: 0 4px 14px rgba(0,255,255,0.06) inset; }
+
+@media (max-width: 480px) {
+    .category-grid .category-icon { padding:10px; align-items:flex-start; }
+    .category-grid .category-icon .cat-icon { font-size:22px; }
+    .category-grid .category-icon .cat-label { font-size:12px; }
+}
+
+/* Brighter input and placeholder text for public/report forms */
+.report-card .form-control,
+.report-card .form-select,
+.report-card input[type="text"],
+.report-card input[type="file"],
+.report-card textarea,
+.login-card .form-control,
+.content-public .form-control,
+.content-public .form-select {
+    color: #e9eef0 !important; /* slightly off-white for readability */
+}
+
+.report-card .form-control::placeholder,
+.report-card textarea::placeholder,
+.content-public .form-control::placeholder {
+    color: #cfd6d8 !important; /* lighter grey placeholder */
+    opacity: 1 !important;
+}
+
+/* ensure file input labels and small helper text remain readable */
+.report-card .muted, .report-card .small, .report-card .form-label {
+    color: #d7e7ea !important;
+}
+
+/* Keep textarea and inputs dark on focus (Keterangan box) */
+.report-card .form-control,
+.report-card textarea,
+.content-public .form-control,
+.content-public textarea {
+    background: #0b0b0d !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    box-shadow: none !important;
+}
+
+.report-card .form-control:focus,
+.report-card textarea:focus,
+.content-public .form-control:focus,
+.content-public textarea:focus {
+    background: #0b0b0d !important;
+    color: #eef6f7 !important;
+    border-color: rgba(0,255,255,0.22) !important;
+    box-shadow: 0 0 0 0.15rem rgba(0,255,255,0.05) !important;
+    outline: none !important;
+}
+
+/* Remove default bright caret/background in some browsers for textarea */
+.report-card textarea:-internal-autofill-selected,
+.report-card textarea:-webkit-autofill {
+    background-color: #0b0b0d !important;
+}
+
+/* Additional mobile UX improvements (touch targets, metrics cards, FAB, bottom action bar) */
+@media (max-width: 768px) {
+    /* Metrics cards: larger touch targets, wrap into multiple rows */
+    #metricsCards { display:flex; gap:10px; flex-wrap:wrap; align-items:stretch; }
+    #metricsCards .card { flex: 1 1 30%; min-width: 96px; padding:12px; box-sizing:border-box; text-align:center; cursor:pointer; border-radius:10px; }
+    #metricsCards .card .small { display:block; font-size:12px; color:#6b6b6b; }
+    #metricsCards .card .h5, #metricsCards .card .h6 { font-size:18px; margin-top:6px; }
+
+    /* Make filter inputs and toolbar easier to tap */
+    .card .d-flex.flex-wrap > div, .card .d-flex.flex-wrap > div * { padding:6px 0; }
+    .form-control, .form-select, button { min-height:44px; }
+
+    /* Chart containers should be shallower on phones to avoid long scrolling */
+    .chart-wrap { height:200px !important; max-height:200px; }
+    .chart-wrap canvas { height:100% !important; }
+
+    /* Reports list items: increase spacing and make them full-width touch blocks */
+    #reportsList .report-card, #allReportsModalBody .report-card { padding:14px !important; margin-bottom:12px !important; border-radius:10px; }
+    #reportsList .report-card .card-body, #allReportsModalBody .report-card .card-body { padding:8px 0; }
+
+    /* Floating primary action button (Create ticket) */
+    .fab { display:flex; position:fixed; right:16px; bottom:86px; width:56px; height:56px; border-radius:50%; background:#ff00ff; color:#000; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(0,0,0,0.28); z-index:1110; }
+
+    /* Bottom action bar for quick actions (apply filters / open filters / export) */
+    .bottom-action-bar { display:flex; gap:8px; align-items:center; justify-content:space-between; position:fixed; left:0; right:0; bottom:0; padding:8px 12px; background:#ffffff; border-top:1px solid rgba(0,0,0,0.06); box-shadow:0 -6px 18px rgba(0,0,0,0.08); z-index:1100; }
+    .bottom-action-bar .btn { flex:1 1 auto; margin:0 6px; min-height:44px; }
+
+    /* Provide a small helper class to enlarge any interactive element */
+    .touch-target { padding:10px 12px; min-height:44px; border-radius:8px; }
+
+    /* Truncate long text rows to keep list compact */
+    .truncate-row { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+}
+
+/* Slightly smaller but still touch-friendly for narrow phones */
+@media (max-width: 420px) {
+    .chart-wrap { height:160px !important; }
+    .fab { right:14px; bottom:78px; width:52px; height:52px; }
+    .bottom-action-bar { padding:8px; }
+    #metricsCards .card { flex: 1 1 48%; min-width: 120px; }
+}

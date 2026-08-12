@@ -1,0 +1,18 @@
+# Rewrite all requests to index.php for FlightPHP routing
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # If the request is for an existing file or directory, serve it directly
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Otherwise route to index.php
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+# Fallback if mod_rewrite isn't available
+<IfModule !mod_rewrite.c>
+    ErrorDocument 404 /index.php
+</IfModule>

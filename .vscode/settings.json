@@ -1,0 +1,9 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^sudo tail -n 200 /opt/lampp/logs/error_log 2>/dev/null \\|\\| true$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "cp": true
+    }
+}
